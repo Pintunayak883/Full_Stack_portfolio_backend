@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL, // Ensure this is the correct frontend URL
+    origin: process.env.FRONTEND_URL || "http://localhost:3000", // Ensure this is the correct frontend URL
     methods: "GET,POST", // Allowed methods
     allowedHeaders: "Content-Type", // Allowed headers
   })
@@ -23,5 +23,5 @@ app.use("/user", router); // Attach the route to /user
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on ${process.env.BACKEND_URL}`);
+  console.log(`Server is running on ${process.env.REACT_APP_BACKEND_URL}`);
 });
